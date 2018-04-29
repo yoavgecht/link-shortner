@@ -25,27 +25,6 @@ const Input = props => {
       );
       break;
 
-    case "date":
-      inputElem = (<DateRangePicker
-          startDate={props.startDate}
-          endDate={props.endDate}
-          startDateId={'startDate'}
-          endDateId={'endDate'}
-          // placeholder="Choose a date"
-          onDatesChange={props.onDatesChange}
-          // focused={props.focused}
-          focusedInput={props.focusedInput}
-          onFocusChange={focusedInput => props.onFocusChange({focusedInput})}
-          numberOfMonths={1}
-          isOutsideRange={day => isInclusivelyAfterDay(day, moment().add(1, 'days'))}
-          displayFormat={'DD/MM/YYYY'}
-        />
-      );
-      break;
-
-      case "endDate":
-      break;
-
     //in case you want to add other input types like textarea etc...
 
     case "textArea":

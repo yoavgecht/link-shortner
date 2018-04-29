@@ -10,7 +10,6 @@ base = alphabets.length;
  * @returns returns shortened code that maps to the database
  */
 const encode = (num) => {
-    console.log('NUM', num);
     let encoded = '';
     while (num > 0) {
         var remainder = num % base;
@@ -18,7 +17,6 @@ const encode = (num) => {
         encoded = alphabets[remainder].toString() + encoded;
         
     }
-    console.log('encoded', encoded)
     return encoded;
 };
 
@@ -39,7 +37,6 @@ const decode = (str) => {
         decoded += index * (Math.pow(base, power));
         str = str.substring(1);
     }
-    console.log('decoded', decoded);
     return decoded;
 }
 

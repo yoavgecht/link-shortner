@@ -5,7 +5,6 @@
 
 
   router.get("/", (req, res, next) => {
-    console.log('GET /')
     res.sendFile(path.join(__dirname, "../build/index.html"));
   });
     

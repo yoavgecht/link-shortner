@@ -14,12 +14,6 @@ class Header extends Component {
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
-              <Navbar.Text>
-                Signed in as: <Navbar.Link href="#">Mark Otto</Navbar.Link>
-              </Navbar.Text>
-              <Navbar.Text pullRight style={{ marginRight: "15px" }}>
-                Login
-              </Navbar.Text>
             </Navbar.Collapse>
           </Navbar>
         </header>
