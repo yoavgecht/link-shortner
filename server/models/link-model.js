@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const CounterSchema = require('./counter-model');
 //db.countersmodels.insert({ _id: 'url_count', seq: 10000000 })
 const urlSchema = new Schema({
-    _id: { type: Number, index: true },
+    _id: { type: Number },
     long_url: String,
     short_url: String,
     hits: { type: Number, default: 0 },
