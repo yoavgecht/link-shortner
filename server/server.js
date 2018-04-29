@@ -5,7 +5,7 @@ app.use(cors());
 const path = require("path");
 const keys = require('../keys');
 const mongoose = require('mongoose');
-const dbUrl = process.env.MONGODB_URI || `mongodb://localhost:27017/${keys.localDbName}`;
+const dbUrl = process.env.MONGOLAB_CYAN_URI || `mongodb://localhost:27017/${keys.localDbName}`;
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const router = require("./routes/routes");
