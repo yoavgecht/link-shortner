@@ -1,6 +1,6 @@
 module.exports = {
     localDbName  : 'linksDB',
-    dbURI        : 'mongodb://undefined:undefined03@ds135179.mlab.com:35179/heroku_8z855b21'
+    dbURI        : 'mongodb://<undefined>:<undefined03>@ds127564.mlab.com:27564/heroku_gfj83r8f'
 }
 
 
