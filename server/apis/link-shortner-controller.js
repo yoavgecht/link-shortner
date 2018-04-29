@@ -67,9 +67,7 @@ const getUrl = (req, res) => {
         urlSchema.findOneAndUpdate({_id: id}, {update}, (err, doc) => {
            if(doc) {
                 res.header("Access-Control-Allow-Origin", "*");
-                res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-                res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-                res.header('Access-Control-Allow-Headers', 'Content-Type');
+                res.header('Access-Control-Allow-Headers');
                 res.status(302).redirect(doc.long_url);
 				res.end();
            } else {
