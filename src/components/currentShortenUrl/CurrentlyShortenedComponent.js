@@ -10,7 +10,7 @@ const CurrentlyShortenedComponent = (props) => {
             <ListGroupItem url={props.currentlyShorten}  className="list-group-class">
               <span className="details-contailner">
               
-                <a href="https://impraise-shooooort.herokuapp.com/api/redirect/{props.currentlyShorten.split('/').pop()}">{props.currentlyShorten}</a>
+                <a href={`/api/redirect/${props.currentlyShorten.split('/').pop()}`}>{props.currentlyShorten}</a>
               </span>
             </ListGroupItem>
           
