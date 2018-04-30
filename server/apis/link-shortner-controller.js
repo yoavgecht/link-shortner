@@ -71,7 +71,7 @@ const getUrl = (req, res) => {
            if(doc) {
                 console.log('REDIRECTING')
                 console.log('doc.long_url', doc.long_url);
-                res.writeHead(302, {'Location': `http://localhost:9080/${doc.long_url}`});
+                res.writeHead(302, {'Location': `https://cors-anywhere.herokuapp.com/${doc.long_url}`});
 				res.end();
            } else {
                console.log('REDIRECTING')
