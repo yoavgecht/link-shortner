@@ -36,7 +36,7 @@ export function redirectToUrl(url) {
     return dispatch({
       type: 'GET_SHORT_URL',
       encodedString,
-      payload: axios.get(`${redirectToLinkUrl}${encodedString}`)
+      payload: axios.get(`${redirectToLinkUrl}${encodedString}`,  {headers: {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers" : "X-Requested-With"}})
       
       })
   }
