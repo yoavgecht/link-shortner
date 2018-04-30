@@ -160,9 +160,7 @@ class App extends Component {
   };
 
   redirectToUrlHandler = (url) => {
-    this.props.redirectToUrl(url).then(res => {
-
-    })
+    this.props.redirectToUrl(url);
   }
 
   showSearchedDataHandler = (searchDate, stockName) => {

@@ -13,20 +13,23 @@ const saveUrl = (req, res) => {
     let longUrl = req.body.url;
     let shortUrl = '';
     if(req.body.url && isUrl(req.body.url)){
+        console.log(req.body.url);
         urlSchema.findOne({long_url: longUrl}, (err, doc) => {
             if(doc) {
+                console.log(doc)
                 //URL has already been shortened
                 // base58 encode the unique _id of that document and construct the short URL
                 shortUrl = `${req.protocol}://${req.get('host')}/${linkShortnerApi.encode(doc._id)}`;
                 // since the document exists, we return it without creating a new entry
-                res.send({'shortUrl': shortUrl});
+                res.json({'shortUrl': shortUrl});
             } else {
+                console.log('newUrl');
                 // The long URL was not found in the long_url field in our urls
                 // collection, so we need to create a new entry
                  let newUrl = urlSchema({
                     long_url: longUrl,
                     short_url: '',
-                    lastVisited: 'No yet visited'
+                    lastVisited: null
                  });
 
                  newUrl.save((err) => {
@@ -36,12 +39,12 @@ const saveUrl = (req, res) => {
 
                  // construct the short URL
                 shortUrl = `${req.protocol}://${req.get('host')}/${linkShortnerApi.encode(newUrl._id)}`;
-
+                
                 urlSchema.findOneAndUpdate({long_url: longUrl}, {'short_url': shortUrl}, (err, counter) => {
                     if(err) return err;
                 });
 
-                res.send({'shortUrl': shortUrl});
+                res.json({'shortUrl': shortUrl});
             })
         }
     });
@@ -66,11 +69,12 @@ const getUrl = (req, res) => {
         // check if url already exists in database
         urlSchema.findOneAndUpdate({_id: id}, {update}, (err, doc) => {
            if(doc) {
-                res.header("Access-Control-Allow-Origin", "*");
-                res.header('Access-Control-Allow-Headers');
-                res.status(302).redirect(doc.long_url);
+                console.log('REDIRECTING')
+                console.log('doc.long_url', doc.long_url);
+                res.writeHead(302, {'Location': `http://localhost:9080/${doc.long_url}`});
 				res.end();
            } else {
+               console.log('REDIRECTING')
                res.redirect(`${req.protocol}://${req.get('host')}/`);
            }
         });

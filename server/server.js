@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require('cors');
 const app = express();
-app.use(cors());
 const path = require("path");
 const keys = require('../keys');
 const mongoose = require('mongoose');
@@ -11,7 +10,7 @@ const bodyParser = require("body-parser");
 const router = require("./routes/routes");
 
 
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../build")));

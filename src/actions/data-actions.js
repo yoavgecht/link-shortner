@@ -37,11 +37,7 @@ export function redirectToUrl(url) {
       type: 'GET_SHORT_URL',
       encodedString,
       payload: axios.get(`${redirectToLinkUrl}${encodedString}`)
-        .then( (response) =>  {
-            if(response.status === 302) {
-                window.location.href = response.headers.location;
-            }      
-         })
+      
       })
   }
 }
