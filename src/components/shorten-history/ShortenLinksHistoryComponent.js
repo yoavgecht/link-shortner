@@ -10,7 +10,7 @@ const ShortenLinksHistoryComponent = (props) => {
         <label>Shorten links history:</label>
         <ListGroup>
           {props.shortenLinksHistoryList.map((url, i) => (
-            <ListGroupItem url={url.long_url} key={i} className="list-group-class">
+            <ListGroupItem key={i} className="list-group-class">
               <span className="details-contailner">
                 <p className="short-url"><strong onClick={() => props.redirectToUrl(url.short_url)}>{url.short_url}</strong></p>
                 <p><i>{url.long_url}</i></p>

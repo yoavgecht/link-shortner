@@ -7,10 +7,9 @@ const CurrentlyShortenedComponent = (props) => {
       <div className="searches-container">
         <label>Your Short link</label>
         <ListGroup>
-            <ListGroupItem url={props.currentlyShorten}  className="list-group-class">
+            <ListGroupItem className="list-group-class">
               <span className="details-contailner">
-              
-                <a href={`/api/redirect/${props.currentlyShorten.split('/').pop()}`}>{props.currentlyShorten}</a>
+                <strong onClick={() => props.redirectToUrl(props.currentlyShorten)}>{props.currentlyShorten}</strong>
               </span>
             </ListGroupItem>
           
