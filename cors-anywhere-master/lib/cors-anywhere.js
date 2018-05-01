@@ -287,9 +287,7 @@ function getHandler(options, proxy) {
     var cors_headers = withCORS({}, req);
     if (req.method === 'OPTIONS') {
       // Pre-flight request. Reply successfully:
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-      res.writeHead(302, {'Location': 'https://docs.google.com/document/d/1HzGE-KNEl_h0JbbMkSmzl-r7txnPoJOi4O0J0zdnYeg/edit#'});
+      res.writeHead(200, cors_headers);
       res.end();
       return;
     }
