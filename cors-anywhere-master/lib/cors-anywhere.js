@@ -287,8 +287,7 @@ function getHandler(options, proxy) {
     var cors_headers = withCORS({}, req);
     if (req.method === 'OPTIONS') {
       // Pre-flight request. Reply successfully:
-      console.log('REQ', req);
-      res.writeHead(302, {'Location': 'https://cors-anywhere.herokuapp.com/https://yoavgecht.github.io/'});
+      res.writeHead(200, cors_headers);
       res.end();
       return;
     }
