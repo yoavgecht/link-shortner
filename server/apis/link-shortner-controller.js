@@ -71,7 +71,9 @@ const getUrl = (req, res) => {
            if(doc) {
                 console.log('REDIRECTING')
                 console.log('doc.long_url', doc.long_url);
-                res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by", "x-powered-by", "CORS Anywhere");
+                res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Allow-Headers", "X-Requested-With");
+                res.header('x-powered-by', 'CORS Anywhere')
                 res.writeHead(302, {'Location': `https://cors-anywhere.herokuapp.com/${doc.long_url}`});
 				res.end();
            } else {
