@@ -1,4 +1,6 @@
 const express = require("express");
+const authRoutes = require('./routes/auth-routes');
+const profileRoutes = require('./routes/profile-routes');
 const cors = require('cors');
 const app = express();
 const path = require("path");
@@ -25,17 +27,21 @@ mongoose.connection.on('error', (err) => {
   console.error(`MongoDB error: ${err}`);
 });
 
+app.use('/profile', profileRoutes);
+
+app.use('/auth', authRoutes);
+
 app.use('/', router);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

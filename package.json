@@ -34,6 +34,8 @@
     "moment": "^2.22.0",
     "mongoose": "^5.0.16",
     "object-assign": "4.1.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "promise": "8.0.1",
@@ -63,7 +65,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "server": "cd server/ && node server.js",
+    "server": "cd server/ && nodemon server.js",
     "build": "node scripts/build.js",
     "deploy": "git add . && git commit -m 'updates' && git push origin master",
     "test": "jest --env=jsdom"

@@ -5,7 +5,7 @@ const shortenLinkUrl = '/api/shorten';
 const redirectToLinkUrl = '/api/redirect/'
 const deleteHistoryLink = '/api/delete-history-link/';
 
-export function getShortenUrlsHistoryList() {
+export const getShortenUrlsHistoryList = () => {
   return dispatch => {
     return dispatch({
       type: 'GET_SHORTEN_URLS_HISTORY_LIST',
@@ -17,7 +17,7 @@ export function getShortenUrlsHistoryList() {
   }
 }
 
-export function getShortUrl(formData) {
+export const getShortUrl = (formData) => {
   return dispatch => {
     return dispatch({
       type: 'GET_SHORT_URL',
@@ -30,19 +30,19 @@ export function getShortUrl(formData) {
   }
 }
 
-export function redirectToUrl(url) {
+export const redirectToUrl = (url) => {
   const encodedString = url.split('/').pop()
   return dispatch => {
     return dispatch({
       type: 'GET_SHORT_URL',
       encodedString,
-      payload: axios.get(`${redirectToLinkUrl}${encodedString}`,  {headers: {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers" : "X-Requested-With"}})
+      payload: axios.get(`${redirectToLinkUrl}${encodedString}`)
       
       })
   }
 }
 
-export function setShortLink(shortLink) {
+export const setShortLink = (shortLink) =>  {
   return dispatch => {
     return dispatch({
       type: 'SET_CURRENTLY_SHORTEN_LINK',
@@ -51,7 +51,7 @@ export function setShortLink(shortLink) {
   }
 }
 
-export function setShortenUrlsHistoryList(history) {
+export const setShortenUrlsHistoryList = (history) => {
   return dispatch => {
     return dispatch({
       type: 'SET_SHORTEN_URLS_HISTORY_LIST',
@@ -60,11 +60,11 @@ export function setShortenUrlsHistoryList(history) {
   }
 }
 
-export function deleteLink(url) {
+export const deleteLink = (url) => {
   const encodedString = url.split('/').pop()
   return dispatch => {
     return dispatch({
-      type: 'DELETE_STOCKDATA',
+      type: 'DELETE_LINK',
       payload: axios.delete(`${deleteHistoryLink}${encodedString}`).then( (response) =>  {
           dispatch(setShortenUrlsHistoryList(response))      
       })
